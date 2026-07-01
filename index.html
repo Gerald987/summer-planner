@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Study Planner — Gerald</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="stars"></div>
+  <nav class="top-nav">
+    <div class="nav-brand">⍟ SUMMER STUDY · 2026</div>
+    <div class="nav-links">
+      <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="tasks">Tasks</button>
+      <button class="nav-btn" data-view="pomodoro">Pomodoro</button>
+      <button class="nav-btn" data-view="week">Week</button>
+    </div>
+    <div class="nav-util">
+      <button class="icon-btn" id="resetBtn" title="Reset all data">⟳</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- DASHBOARD -->
+    <section id="view-dashboard" class="view active">
+      <h1>Mission Control</h1>
+      <p class="subtitle">Track your summer study progress across all subjects</p>
+      <div class="overall-progress">
+        <div class="progress-ring-container">
+          <svg class="progress-ring" width="140" height="140">
+            <circle class="ring-bg" cx="70" cy="70" r="60"/>
+            <circle class="ring-fg" cx="70" cy="70" r="60"/>
+          </svg>
+          <div class="ring-center">
+            <span class="ring-pct" id="overallPct">0%</span>
+            <span class="ring-label">complete</span>
+          </div>
+        </div>
+        <div class="progress-stats">
+          <div class="stat"><span class="stat-num" id="statDone">0</span> tasks done</div>
+          <div class="stat"><span class="stat-num" id="statTotal">0</span> total</div>
+          <div class="stat"><span class="stat-num" id="statStreak">0</span> day streak</div>
+        </div>
+      </div>
+      <div class="subject-cards" id="subjectCards"></div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="view-tasks" class="view">
+      <h1>Subject Tasks</h1>
+      <p class="subtitle">Select a subject to manage its task list</p>
+      <div class="subject-tabs" id="subjectTabs"></div>
+      <div class="task-panel" id="taskPanel">
+        <div class="task-header">
+          <h2 id="taskSubjectTitle">Select a subject</h2>
+          <div class="task-progress-bar"><div class="task-progress-fill" id="taskProgressFill"></div></div>
+          <span class="task-progress-text" id="taskProgressText">0/0</span>
+        </div>
+        <div class="task-input-row">
+          <input type="text" id="taskInput" placeholder="Add a task..." />
+          <button id="taskAddBtn">+ Add</button>
+        </div>
+        <ul class="task-list" id="taskList"></ul>
+      </div>
+    </section>
+
+    <!-- POMODORO -->
+    <section id="view-pomodoro" class="view">
+      <h1>Pomodoro Focus</h1>
+      <p class="subtitle">25 minutes of focus, 5 minutes of rest</p>
+      <div class="pomodoro-container">
+        <div class="pomodoro-mode">
+          <button class="mode-btn active" data-mode="pomo">Focus</button>
+          <button class="mode-btn" data-mode="short">Short Break</button>
+          <button class="mode-btn" data-mode="long">Long Break</button>
+        </div>
+        <div class="timer-circle">
+          <svg width="260" height="260">
+            <circle class="timer-bg" cx="130" cy="130" r="115"/>
+            <circle class="timer-fg" cx="130" cy="130" r="115"/>
+          </svg>
+          <div class="timer-center">
+            <span class="timer-display" id="timerDisplay">25:00</span>
+            <span class="timer-label" id="timerLabel">Focus</span>
+          </div>
+        </div>
+        <div class="timer-controls">
+          <button id="timerStartBtn">▶ Start</button>
+          <button id="timerResetBtn">⟲ Reset</button>
+        </div>
+        <div class="pomodoro-stats">
+          <span>Today: <strong id="pomoCount">0</strong> pomodoros</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEEK -->
+    <section id="view-week" class="view">
+      <h1>Weekly Plan</h1>
+      <p class="subtitle">Plan which subjects to study each day</p>
+      <div class="week-grid" id="weekGrid"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
